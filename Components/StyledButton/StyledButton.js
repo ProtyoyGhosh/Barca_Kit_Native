@@ -2,16 +2,18 @@ import React from 'react'
 import { View, Text, Pressable } from 'react-native'
 import styles from './style'
 
-const StyledButton = () => {
+const StyledButton = (props) => {
+    const { type, contant, onPress } = props;
+
+    const bgColor = type === 'primary' ? 'blue' : 'maroon';
+
     return (
-        <View>
+        <View style={styles.container}>
             <Pressable
-                style={styles.button}
-                onPress={() => {
-                    console.warn('hey there')
-                }}
+                style={[styles.button, { backgroundColor: bgColor }]}
+                onPress={() => onPress()}
             >
-                <Text>Custome Order</Text>
+                <Text style={styles.text}>{contant}</Text>
             </Pressable>
         </View>
     )
